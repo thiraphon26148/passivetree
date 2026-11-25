@@ -1,0 +1,1127 @@
+{
+ "classes": [
+  {
+   "id": "warrior",
+   "start": "s0",
+   "color": "#D9534F"
+  },
+  {
+   "id": "ranger",
+   "start": "s1",
+   "color": "#5CB85C"
+  },
+  {
+   "id": "witch",
+   "start": "s2",
+   "color": "#B05CD6"
+  },
+  {
+   "id": "monk",
+   "start": "s3",
+   "color": "#5BC0DE"
+  },
+  {
+   "id": "mercenary",
+   "start": "s4",
+   "color": "#F0AD4E"
+  },
+  {
+   "id": "sorceress",
+   "start": "s5",
+   "color": "#428BCA"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "s0",
+   "name": "Warrior's Oath",
+   "type": "start",
+   "x": 0.0,
+   "y": -150.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "b0",
+   "name": "Crossroads of Iron",
+   "type": "small",
+   "x": 75.0,
+   "y": -129.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "s0",
+    "s1"
+   ]
+  },
+  {
+   "id": "a10",
+   "name": "Heavy Blows",
+   "type": "small",
+   "x": 0.0,
+   "y": -230.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "s0"
+   ]
+  },
+  {
+   "id": "a20",
+   "name": "Thick Hide",
+   "type": "small",
+   "x": 0.0,
+   "y": -305.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "a10"
+   ]
+  },
+  {
+   "id": "n0",
+   "name": "Titan's Grip",
+   "type": "notable",
+   "x": 0.0,
+   "y": -385.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 1.5
+    },
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "a20"
+   ]
+  },
+  {
+   "id": "k0",
+   "name": "Unbroken Will",
+   "type": "keystone",
+   "x": 0.0,
+   "y": -475.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 10.0
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": -0.1
+    }
+   ],
+   "links": [
+    "n0"
+   ]
+  },
+  {
+   "id": "w10",
+   "name": "Stalwart",
+   "type": "small",
+   "x": 127.5,
+   "y": -220.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "b0"
+   ]
+  },
+  {
+   "id": "w20",
+   "name": "Bulwark Step",
+   "type": "small",
+   "x": 167.5,
+   "y": -290.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "w10",
+    "a20",
+    "a21"
+   ]
+  },
+  {
+   "id": "nl0",
+   "name": "Raw Strength",
+   "type": "small",
+   "x": -88.4,
+   "y": -415.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "n0"
+   ]
+  },
+  {
+   "id": "nr0",
+   "name": "Battle Fervor",
+   "type": "small",
+   "x": 88.4,
+   "y": -415.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "n0"
+   ]
+  },
+  {
+   "id": "s1",
+   "name": "Hunter's Mark",
+   "type": "start",
+   "x": 129.9,
+   "y": -75.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "b1",
+   "name": "Crossroads of Wind",
+   "type": "small",
+   "x": 150.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "s1",
+    "s2"
+   ]
+  },
+  {
+   "id": "a11",
+   "name": "Light Feet",
+   "type": "small",
+   "x": 199.2,
+   "y": -115.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "s1"
+   ]
+  },
+  {
+   "id": "a21",
+   "name": "Quick Draw",
+   "type": "small",
+   "x": 264.1,
+   "y": -152.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "a11"
+   ]
+  },
+  {
+   "id": "n1",
+   "name": "Eagle Eye",
+   "type": "notable",
+   "x": 333.4,
+   "y": -192.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.06
+    },
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "a21"
+   ]
+  },
+  {
+   "id": "k1",
+   "name": "Windrunner",
+   "type": "keystone",
+   "x": 411.4,
+   "y": -237.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.25
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": -4.0
+    }
+   ],
+   "links": [
+    "n1"
+   ]
+  },
+  {
+   "id": "w11",
+   "name": "Keen Senses",
+   "type": "small",
+   "x": 255.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "b1"
+   ]
+  },
+  {
+   "id": "w21",
+   "name": "Fleet Stride",
+   "type": "small",
+   "x": 335.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "w11",
+    "a21",
+    "a22"
+   ]
+  },
+  {
+   "id": "nl1",
+   "name": "Swift Hands",
+   "type": "small",
+   "x": 315.8,
+   "y": -284.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "n1"
+   ]
+  },
+  {
+   "id": "nr1",
+   "name": "Trail Luck",
+   "type": "small",
+   "x": 404.2,
+   "y": -131.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "n1"
+   ]
+  },
+  {
+   "id": "s2",
+   "name": "Witch's Pact",
+   "type": "start",
+   "x": 129.9,
+   "y": 75.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "b2",
+   "name": "Crossroads of Hex",
+   "type": "small",
+   "x": 75.0,
+   "y": 129.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "s2",
+    "s3"
+   ]
+  },
+  {
+   "id": "a12",
+   "name": "Dark Whisper",
+   "type": "small",
+   "x": 199.2,
+   "y": 115.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "s2"
+   ]
+  },
+  {
+   "id": "a22",
+   "name": "Frail Bargain",
+   "type": "small",
+   "x": 264.1,
+   "y": 152.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "a12"
+   ]
+  },
+  {
+   "id": "n2",
+   "name": "Hexweaver",
+   "type": "notable",
+   "x": 333.4,
+   "y": 192.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "a22"
+   ]
+  },
+  {
+   "id": "k2",
+   "name": "Fortune's Hex",
+   "type": "keystone",
+   "x": 411.4,
+   "y": 237.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 3.0
+    },
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": -4.0
+    }
+   ],
+   "links": [
+    "n2"
+   ]
+  },
+  {
+   "id": "w12",
+   "name": "Cursed Luck",
+   "type": "small",
+   "x": 127.5,
+   "y": 220.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "b2"
+   ]
+  },
+  {
+   "id": "w22",
+   "name": "Veil Step",
+   "type": "small",
+   "x": 167.5,
+   "y": 290.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "w12",
+    "a22",
+    "a23"
+   ]
+  },
+  {
+   "id": "nl2",
+   "name": "Black Candle",
+   "type": "small",
+   "x": 404.2,
+   "y": 131.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "n2"
+   ]
+  },
+  {
+   "id": "nr2",
+   "name": "Grim Resolve",
+   "type": "small",
+   "x": 315.8,
+   "y": 284.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "n2"
+   ]
+  },
+  {
+   "id": "s3",
+   "name": "Monk's Vow",
+   "type": "start",
+   "x": 0.0,
+   "y": 150.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "b3",
+   "name": "Crossroads of Calm",
+   "type": "small",
+   "x": -75.0,
+   "y": 129.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "s3",
+    "s4"
+   ]
+  },
+  {
+   "id": "a13",
+   "name": "Open Palm",
+   "type": "small",
+   "x": 0.0,
+   "y": 230.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "s3"
+   ]
+  },
+  {
+   "id": "a23",
+   "name": "Steady Breath",
+   "type": "small",
+   "x": 0.0,
+   "y": 305.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "a13"
+   ]
+  },
+  {
+   "id": "n3",
+   "name": "Inner Focus",
+   "type": "notable",
+   "x": 0.0,
+   "y": 385.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.08
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "a23"
+   ]
+  },
+  {
+   "id": "k3",
+   "name": "Flowing Strikes",
+   "type": "keystone",
+   "x": 0.0,
+   "y": 475.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.3
+    },
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": -1.0
+    }
+   ],
+   "links": [
+    "n3"
+   ]
+  },
+  {
+   "id": "w13",
+   "name": "Calm Mind",
+   "type": "small",
+   "x": -127.5,
+   "y": 220.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "b3"
+   ]
+  },
+  {
+   "id": "w23",
+   "name": "Light Step",
+   "type": "small",
+   "x": -167.5,
+   "y": 290.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "w13",
+    "a23",
+    "a24"
+   ]
+  },
+  {
+   "id": "nl3",
+   "name": "Rising Fist",
+   "type": "small",
+   "x": 88.4,
+   "y": 415.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "n3"
+   ]
+  },
+  {
+   "id": "nr3",
+   "name": "Still Water",
+   "type": "small",
+   "x": -88.4,
+   "y": 415.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "n3"
+   ]
+  },
+  {
+   "id": "s4",
+   "name": "Sellsword's Pact",
+   "type": "start",
+   "x": -129.9,
+   "y": 75.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "b4",
+   "name": "Crossroads of Coin",
+   "type": "small",
+   "x": -150.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "s4",
+    "s5"
+   ]
+  },
+  {
+   "id": "a14",
+   "name": "Hired Muscle",
+   "type": "small",
+   "x": -199.2,
+   "y": 115.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "s4"
+   ]
+  },
+  {
+   "id": "a24",
+   "name": "Plated Coat",
+   "type": "small",
+   "x": -264.1,
+   "y": 152.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "a14"
+   ]
+  },
+  {
+   "id": "n4",
+   "name": "Veteran's Edge",
+   "type": "notable",
+   "x": -333.4,
+   "y": 192.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 2.0
+    },
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "a24"
+   ]
+  },
+  {
+   "id": "k4",
+   "name": "Iron Contract",
+   "type": "keystone",
+   "x": -411.4,
+   "y": 237.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 8.0
+    },
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 2.0
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": -0.1
+    }
+   ],
+   "links": [
+    "n4"
+   ]
+  },
+  {
+   "id": "w14",
+   "name": "Scavenger",
+   "type": "small",
+   "x": -255.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "b4"
+   ]
+  },
+  {
+   "id": "w24",
+   "name": "Hard Bargain",
+   "type": "small",
+   "x": -335.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "w14",
+    "a24",
+    "a25"
+   ]
+  },
+  {
+   "id": "nl4",
+   "name": "Steel Resolve",
+   "type": "small",
+   "x": -315.8,
+   "y": 284.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "n4"
+   ]
+  },
+  {
+   "id": "nr4",
+   "name": "Spoils of War",
+   "type": "small",
+   "x": -404.2,
+   "y": 131.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "n4"
+   ]
+  },
+  {
+   "id": "s5",
+   "name": "Sorceress's Spark",
+   "type": "start",
+   "x": -129.9,
+   "y": -75.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "b5",
+   "name": "Crossroads of Storm",
+   "type": "small",
+   "x": -75.0,
+   "y": -129.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "s5",
+    "s0"
+   ]
+  },
+  {
+   "id": "a15",
+   "name": "Static Charge",
+   "type": "small",
+   "x": -199.2,
+   "y": -115.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "s5"
+   ]
+  },
+  {
+   "id": "a25",
+   "name": "Fleeting Form",
+   "type": "small",
+   "x": -264.1,
+   "y": -152.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "a15"
+   ]
+  },
+  {
+   "id": "n5",
+   "name": "Storm Caller",
+   "type": "notable",
+   "x": -333.4,
+   "y": -192.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 1.5
+    },
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "a25"
+   ]
+  },
+  {
+   "id": "k5",
+   "name": "Arcane Gambit",
+   "type": "keystone",
+   "x": -411.4,
+   "y": -237.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 4.0
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": -6.0
+    }
+   ],
+   "links": [
+    "n5"
+   ]
+  },
+  {
+   "id": "w15",
+   "name": "Lucky Spark",
+   "type": "small",
+   "x": -127.5,
+   "y": -220.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "b5"
+   ]
+  },
+  {
+   "id": "w25",
+   "name": "Blink Step",
+   "type": "small",
+   "x": -167.5,
+   "y": -290.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "w15",
+    "a25",
+    "a20"
+   ]
+  },
+  {
+   "id": "nl5",
+   "name": "Raw Power",
+   "type": "small",
+   "x": -404.2,
+   "y": -131.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "n5"
+   ]
+  },
+  {
+   "id": "nr5",
+   "name": "Lightning Reflex",
+   "type": "small",
+   "x": -315.8,
+   "y": -284.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "n5"
+   ]
+  }
+ ]
+}
