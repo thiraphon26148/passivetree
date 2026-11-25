@@ -7,7 +7,7 @@
   "screen.passivetree.center": "Center",
   "screen.passivetree.points": "Points: %s",
   "screen.passivetree.class": "Class: %s",
-  "screen.passivetree.hint": "Drag: move | Scroll: zoom | Click: allocate | K: close",
+  "screen.passivetree.hint": "Drag: move | Scroll: zoom | Left-click: allocate | Right-click: refund | K: close",
   "class.passivetree.warrior": "Warrior",
   "class.passivetree.ranger": "Ranger",
   "class.passivetree.witch": "Witch",
@@ -25,5 +25,9 @@
   "tooltip.passivetree.no_class": "Choose a class first",
   "msg.passivetree.points_added": "Added %s passive points",
   "msg.passivetree.respec_done": "Passive tree reset",
-  "msg.passivetree.class_reset": "Class and passive tree cleared"
+  "msg.passivetree.class_reset": "Class and passive tree cleared",
+  "class.passivetree.huntress": "Huntress",
+  "class.passivetree.druid": "Druid",
+  "tooltip.passivetree.can_refund": "Right-click to refund",
+  "tooltip.passivetree.cannot_refund": "Cannot refund: other nodes depend on it"
 }

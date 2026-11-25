@@ -5,6 +5,7 @@ import com.example.passivetree.data.ModCapabilities;
 import com.example.passivetree.data.PlayerSkills;
 import com.example.passivetree.network.AllocatePacket;
 import com.example.passivetree.network.ChooseClassPacket;
+import com.example.passivetree.network.DeallocatePacket;
 import com.example.passivetree.network.Net;
 import com.example.passivetree.network.RespecPacket;
 import com.example.passivetree.tree.NodeStat;
@@ -19,10 +20,12 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.joml.Matrix4f;
@@ -34,12 +37,13 @@ import java.util.List;
 public class SkillTreeScreen extends Screen {
     private static final int HEADER_H = 24;
     private static final DecimalFormat NUM = new DecimalFormat("0.##");
+    private static final float[] RING_RADII = {150f, 300f, 450f, 600f};
 
     private final SkillTree tree = SkillTree.get();
 
     private double offX = 0;
     private double offY = 0;
-    private double zoom = 0.9;
+    private double zoom = 0.75;
     private boolean centered = false;
     private boolean builtHasClass = false;
     private boolean clickedOnTree = false;
@@ -64,15 +68,19 @@ public class SkillTreeScreen extends Screen {
         builtHasClass = s != null && !s.getClassId().isEmpty();
 
         if (!builtHasClass) {
-            int bw = 150, bh = 20, gap = 6;
+            int bw = 130, bh = 20, gap = 6;
             int n = tree.classes.size();
-            int y0 = height / 2 - (n * (bh + gap)) / 2 + 12;
+            int rows = (n + 1) / 2;
+            int y0 = height / 2 - (rows * (bh + gap)) / 2 + 12;
             for (int i = 0; i < n; i++) {
                 SkillTree.ClassDef cd = tree.classes.get(i);
+                int col = i % 2;
+                int row = i / 2;
+                int x = width / 2 + (col == 0 ? -bw - gap / 2 : gap / 2);
                 addRenderableWidget(Button.builder(
                                 Component.translatable("class.passivetree." + cd.id()),
                                 b -> Net.CHANNEL.sendToServer(new ChooseClassPacket(cd.id())))
-                        .bounds(width / 2 - bw / 2, y0 + i * (bh + gap), bw, bh).build());
+                        .bounds(x, y0 + row * (bh + gap), bw, bh).build());
             }
         } else {
             addRenderableWidget(Button.builder(Component.translatable("screen.passivetree.respec"),
@@ -111,22 +119,30 @@ public class SkillTreeScreen extends Screen {
 
     // ------------------------------------------------------------ coordinates
 
+    private double originX() {
+        return width / 2.0 + offX;
+    }
+
+    private double originY() {
+        return height / 2.0 + HEADER_H / 2.0 + offY;
+    }
+
     private double sx(SkillNode n) {
-        return width / 2.0 + offX + n.x * zoom;
+        return originX() + n.x * zoom;
     }
 
     private double sy(SkillNode n) {
-        return height / 2.0 + HEADER_H / 2.0 + offY + n.y * zoom;
+        return originY() + n.y * zoom;
     }
 
-    private int nodeSize(SkillNode n) {
+    private float nodeRadius(SkillNode n) {
         double base = switch (n.type) {
-            case START -> 15;
+            case START -> 20;
             case SMALL -> 11;
             case NOTABLE -> 17;
-            case KEYSTONE -> 24;
+            case KEYSTONE -> 25;
         };
-        return Math.max(5, (int) Math.round(base * Math.min(1.2, 0.5 + zoom * 0.6)));
+        return (float) Math.max(3.0, base * Math.min(1.25, 0.5 + zoom * 0.6) / 2.0);
     }
 
     // ------------------------------------------------------------ render
@@ -140,17 +156,19 @@ public class SkillTreeScreen extends Screen {
             init();
         }
 
-        g.fill(0, 0, width, height, 0xFF0B0B12);
+        g.fill(0, 0, width, height, 0xFF0A0A10);
 
         if (!builtHasClass || s == null) {
             Component title = Component.translatable("screen.passivetree.choose_class");
-            g.drawString(font, title, width / 2 - font.width(title) / 2, height / 2 - 100, 0xFFE8C170);
+            g.drawString(font, title, width / 2 - font.width(title) / 2, height / 2 - 108, 0xFFE8C170);
             super.render(g, mx, my, pt);
             return;
         }
 
+        computeHover(mx, my);
         drawEdges(g, s);
-        drawNodes(g, s, mx, my);
+        drawNodes(g, s);
+        drawLabels(g);
         drawHeader(g, s);
         super.render(g, mx, my, pt);
 
@@ -158,6 +176,21 @@ public class SkillTreeScreen extends Screen {
             SkillNode n = tree.nodes.get(hoveredId);
             if (n != null) {
                 g.renderComponentTooltip(font, tooltipFor(n, s), mx, my);
+            }
+        }
+    }
+
+    private void computeHover(int mx, int my) {
+        hoveredId = null;
+        double best = Double.MAX_VALUE;
+        for (SkillNode n : tree.nodes.values()) {
+            double cx = sx(n), cy = sy(n);
+            if (cx < -40 || cx > width + 40 || cy < -40 || cy > height + 40) continue;
+            double d = Math.hypot(mx - cx, my - cy);
+            double hit = Math.max(nodeRadius(n) + 1.5, 6);
+            if (d <= hit && d < best) {
+                best = d;
+                hoveredId = n.id;
             }
         }
     }
@@ -172,110 +205,171 @@ public class SkillTreeScreen extends Screen {
         g.drawString(font, Component.translatable("screen.passivetree.hint"), 8, height - 14, 0xFF777788);
     }
 
-    private void drawEdges(GuiGraphics g, PlayerSkills s) {
-        g.flush();
-        Matrix4f m = g.pose().last().pose();
+    // ---- low level shapes -------------------------------------------------
+
+    private static void vtx(BufferBuilder buf, Matrix4f m, double x, double y, int color) {
+        buf.vertex(m, (float) x, (float) y, 0f)
+                .color((color >> 16) & 255, (color >> 8) & 255, color & 255, (color >>> 24) & 255)
+                .endVertex();
+    }
+
+    /** A thick line as a quad. */
+    private static void line(BufferBuilder buf, Matrix4f m, double x1, double y1, double x2, double y2, double half, int color) {
+        double dx = x2 - x1, dy = y2 - y1;
+        double len = Math.sqrt(dx * dx + dy * dy);
+        if (len < 0.001) return;
+        double nx = -dy / len * half;
+        double ny = dx / len * half;
+        vtx(buf, m, x1 + nx, y1 + ny, color);
+        vtx(buf, m, x1 - nx, y1 - ny, color);
+        vtx(buf, m, x2 - nx, y2 - ny, color);
+        vtx(buf, m, x2 + nx, y2 + ny, color);
+    }
+
+    /** A filled regular polygon (many sides = circle) as a triangle list. */
+    private static void poly(BufferBuilder buf, Matrix4f m, double cx, double cy, double r, int sides, double rot, int color) {
+        for (int i = 0; i < sides; i++) {
+            double a0 = rot + 2 * Math.PI * i / sides;
+            double a1 = rot + 2 * Math.PI * (i + 1) / sides;
+            vtx(buf, m, cx, cy, color);
+            vtx(buf, m, cx + r * Math.cos(a0), cy + r * Math.sin(a0), color);
+            vtx(buf, m, cx + r * Math.cos(a1), cy + r * Math.sin(a1), color);
+        }
+    }
+
+    private static void beginDraw() {
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.disableCull();
+    }
 
-        BufferBuilder buf = Tesselator.getInstance().getBuilder();
-        buf.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-
-        for (SkillTree.Edge e : tree.edges) {
-            boolean a = s.isAllocated(e.a().id);
-            boolean b = s.isAllocated(e.b().id);
-            int color;
-            double half;
-            if (a && b) {
-                color = 0xFFE8C170;
-                half = 1.6;
-            } else if (a || b) {
-                color = 0xFF5A6A80;
-                half = 1.2;
-            } else {
-                color = 0xFF33333F;
-                half = 1.0;
-            }
-            half *= Math.max(0.7, zoom);
-
-            double x1 = sx(e.a()), y1 = sy(e.a()), x2 = sx(e.b()), y2 = sy(e.b());
-            double dx = x2 - x1, dy = y2 - y1;
-            double len = Math.sqrt(dx * dx + dy * dy);
-            if (len < 0.001) continue;
-            float nx = (float) (-dy / len * half);
-            float ny = (float) (dx / len * half);
-
-            int ca = (color >> 24) & 255, cr = (color >> 16) & 255, cg = (color >> 8) & 255, cb = color & 255;
-            buf.vertex(m, (float) x1 + nx, (float) y1 + ny, 0f).color(cr, cg, cb, ca).endVertex();
-            buf.vertex(m, (float) x1 - nx, (float) y1 - ny, 0f).color(cr, cg, cb, ca).endVertex();
-            buf.vertex(m, (float) x2 - nx, (float) y2 - ny, 0f).color(cr, cg, cb, ca).endVertex();
-            buf.vertex(m, (float) x2 + nx, (float) y2 + ny, 0f).color(cr, cg, cb, ca).endVertex();
-        }
-
+    private static void endDraw() {
         Tesselator.getInstance().end();
         RenderSystem.enableCull();
         RenderSystem.disableBlend();
     }
 
-    private void drawNodes(GuiGraphics g, PlayerSkills s, int mx, int my) {
-        hoveredId = null;
-        double best = Double.MAX_VALUE;
+    // ---- edges + background rings ----------------------------------------
 
-        for (SkillNode n : tree.nodes.values()) {
-            int cx = (int) Math.round(sx(n));
-            int cy = (int) Math.round(sy(n));
-            if (cx < -40 || cx > width + 40 || cy < -40 || cy > height + 40) continue;
+    private void drawEdges(GuiGraphics g, PlayerSkills s) {
+        g.flush();
+        Matrix4f m = g.pose().last().pose();
+        beginDraw();
+        BufferBuilder buf = Tesselator.getInstance().getBuilder();
+        buf.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 
-            int size = nodeSize(n);
-            boolean allocated = s.isAllocated(n.id);
-            boolean available = !allocated && SkillService.canAllocate(s, tree, n);
-
-            int fill, border;
-            if (allocated) {
-                fill = 0xFFE8C170;
-                border = 0xFFFFF0B0;
-            } else if (available) {
-                fill = 0xFF4A6A8A;
-                border = 0xFFBBD8FF;
-            } else {
-                fill = 0xFF22222B;
-                border = 0xFF4A4A58;
-            }
-            if (n.type == SkillNode.Type.START) {
-                border = classColor(n.id);
-            } else if (n.type == SkillNode.Type.KEYSTONE && !allocated) {
-                border = 0xFFD9822B;
-            }
-            int bw = switch (n.type) {
-                case SMALL -> 1;
-                case NOTABLE -> 2;
-                case START, KEYSTONE -> 3;
-            };
-
-            octagon(g, cx - size / 2, cy - size / 2, cx + size / 2, cy + size / 2, Math.max(1, size / 4), border);
-            int in = Math.min(bw, size / 2 - 1);
-            octagon(g, cx - size / 2 + in, cy - size / 2 + in, cx + size / 2 - in, cy + size / 2 - in,
-                    Math.max(0, size / 4 - 1), fill);
-
-            double d = Math.max(Math.abs(mx - cx), Math.abs(my - cy));
-            if (d <= Math.max(size / 2.0, 6) && d < best) {
-                best = d;
-                hoveredId = n.id;
+        // guide rings
+        double ox = originX(), oy = originY();
+        int segs = 96;
+        for (float rr : RING_RADII) {
+            double r = rr * zoom;
+            for (int i = 0; i < segs; i++) {
+                double a0 = 2 * Math.PI * i / segs;
+                double a1 = 2 * Math.PI * (i + 1) / segs;
+                line(buf, m, ox + r * Math.cos(a0), oy + r * Math.sin(a0),
+                        ox + r * Math.cos(a1), oy + r * Math.sin(a1), 0.8, 0xFF15151E);
             }
         }
 
-        if (hoveredId != null) {
-            SkillNode n = tree.nodes.get(hoveredId);
+        double zs = Math.max(0.7, zoom);
+        for (SkillTree.Edge e : tree.edges) {
+            boolean a = s.isAllocated(e.a().id);
+            boolean b = s.isAllocated(e.b().id);
+            double x1 = sx(e.a()), y1 = sy(e.a()), x2 = sx(e.b()), y2 = sy(e.b());
+            if (a && b) {
+                line(buf, m, x1, y1, x2, y2, 3.6 * zs, 0x40E8C170); // soft glow
+                line(buf, m, x1, y1, x2, y2, 1.7 * zs, 0xFFF2D080);
+            } else if (a || b) {
+                line(buf, m, x1, y1, x2, y2, 1.2 * zs, 0xFF55667C);
+            } else {
+                line(buf, m, x1, y1, x2, y2, 1.0 * zs, 0xFF2E2E3A);
+            }
+        }
+        endDraw();
+    }
+
+    // ---- nodes -------------------------------------------------------------
+
+    private void drawNodes(GuiGraphics g, PlayerSkills s) {
+        Matrix4f m = g.pose().last().pose();
+        beginDraw();
+        BufferBuilder buf = Tesselator.getInstance().getBuilder();
+        buf.begin(VertexFormat.Mode.TRIANGLES, DefaultVertexFormat.POSITION_COLOR);
+
+        for (SkillNode n : tree.nodes.values()) {
+            double cx = sx(n), cy = sy(n);
+            if (cx < -40 || cx > width + 40 || cy < -40 || cy > height + 40) continue;
+
+            float r = nodeRadius(n);
+            int sides = r > 9 ? 28 : (r > 5 ? 20 : 14);
+            boolean allocated = s.isAllocated(n.id);
+            boolean available = !allocated && SkillService.canAllocate(s, tree, n);
+
+            int fill, border, marker;
+            if (allocated) {
+                fill = 0xFFE8C170;
+                border = 0xFFFFF0B0;
+                marker = 0xFF6B4A12;
+            } else if (available) {
+                fill = 0xFF3F6082;
+                border = 0xFFBBD8FF;
+                marker = 0xFFBBD8FF;
+            } else {
+                fill = 0xFF1E1E27;
+                border = 0xFF4A4A58;
+                marker = 0xFF4F4F5E;
+            }
+            int classCol = n.type == SkillNode.Type.START ? classColor(n.id) : 0;
+            if (n.type == SkillNode.Type.START) {
+                border = classCol;
+                if (!allocated) marker = classCol;
+            } else if (n.type == SkillNode.Type.KEYSTONE && !allocated) {
+                border = 0xFFD9822B;
+                marker = 0xFFD9822B;
+            }
+            double bw = switch (n.type) {
+                case SMALL -> 1.2;
+                case NOTABLE -> 1.8;
+                case START, KEYSTONE -> 2.2;
+            };
+
+            if (allocated) {
+                poly(buf, m, cx, cy, r * 1.8, sides, 0, 0x30E8C170);
+            }
+            if (n.id.equals(hoveredId)) {
+                poly(buf, m, cx, cy, r + 2.6, sides, 0, 0xFFFFFFFF);
+            }
+            poly(buf, m, cx, cy, r, sides, 0, border);
+            poly(buf, m, cx, cy, Math.max(1, r - bw), sides, 0, fill);
+
+            switch (n.type) {
+                case NOTABLE -> poly(buf, m, cx, cy, r * 0.46, 4, Math.PI / 4, marker);
+                case KEYSTONE -> {
+                    poly(buf, m, cx, cy, r * 0.65, 4, 0, marker);
+                    poly(buf, m, cx, cy, r * 0.65, 4, Math.PI / 4, marker);
+                }
+                case START -> poly(buf, m, cx, cy, r * 0.5, 16, 0, marker);
+                default -> { }
+            }
+        }
+        endDraw();
+    }
+
+    private void drawLabels(GuiGraphics g) {
+        if (zoom < 0.45) return;
+        for (SkillNode n : tree.nodes.values()) {
+            if (n.type != SkillNode.Type.START && !(n.type == SkillNode.Type.KEYSTONE && zoom >= 0.7)) continue;
             int cx = (int) Math.round(sx(n));
             int cy = (int) Math.round(sy(n));
-            int h = nodeSize(n) / 2 + 2;
-            int c = 0xFFFFFFFF;
-            g.fill(cx - h, cy - h, cx + h, cy - h + 1, c);
-            g.fill(cx - h, cy + h - 1, cx + h, cy + h, c);
-            g.fill(cx - h, cy - h, cx - h + 1, cy + h, c);
-            g.fill(cx + h - 1, cy - h, cx + h, cy + h, c);
+            if (cx < -60 || cx > width + 60 || cy < -20 || cy > height + 20) continue;
+            int ty = cy + (int) nodeRadius(n) + 4;
+            if (n.type == SkillNode.Type.START) {
+                String cid = n.id.substring(0, n.id.indexOf('_'));
+                g.drawCenteredString(font, Component.translatable("class.passivetree." + cid), cx, ty, classColor(n.id));
+            } else {
+                g.drawCenteredString(font, Component.literal(n.name), cx, ty, 0xFFD9822B);
+            }
         }
     }
 
@@ -284,14 +378,6 @@ public class SkillTreeScreen extends Screen {
             if (cd.start().equals(startNodeId)) return cd.color();
         }
         return 0xFFFFFFFF;
-    }
-
-    private void octagon(GuiGraphics g, int x1, int y1, int x2, int y2, int c, int color) {
-        if (x2 <= x1 || y2 <= y1) return;
-        g.fill(x1 + c, y1, x2 - c, y2, color);
-        g.fill(x1, y1 + c, x2, y2 - c, color);
-        int h = c / 2;
-        g.fill(x1 + h, y1 + h, x2 - h, y2 - h, color);
     }
 
     // ------------------------------------------------------------ tooltip
@@ -311,6 +397,11 @@ public class SkillTreeScreen extends Screen {
         lines.add(Component.empty());
         if (s.isAllocated(n.id)) {
             lines.add(Component.translatable("tooltip.passivetree.allocated").withStyle(ChatFormatting.GREEN));
+            if (SkillService.canDeallocate(s, tree, n)) {
+                lines.add(Component.translatable("tooltip.passivetree.can_refund").withStyle(ChatFormatting.GRAY));
+            } else if (n.type != SkillNode.Type.START) {
+                lines.add(Component.translatable("tooltip.passivetree.cannot_refund").withStyle(ChatFormatting.DARK_GRAY));
+            }
         } else if (SkillService.canAllocate(s, tree, n)) {
             lines.add(Component.translatable("tooltip.passivetree.can_allocate", n.cost()).withStyle(ChatFormatting.AQUA));
         } else {
@@ -344,6 +435,15 @@ public class SkillTreeScreen extends Screen {
 
     // ------------------------------------------------------------ input
 
+    private void playSound(boolean allocate) {
+        Minecraft mc = Minecraft.getInstance();
+        if (allocate) {
+            mc.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.EXPERIENCE_ORB_PICKUP, 1.4F));
+        } else {
+            mc.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 0.7F));
+        }
+    }
+
     @Override
     public boolean mouseClicked(double mx, double my, int button) {
         if (super.mouseClicked(mx, my, button)) {
@@ -368,8 +468,18 @@ public class SkillTreeScreen extends Screen {
 
     @Override
     public boolean mouseReleased(double mx, double my, int button) {
-        if (clickedOnTree && button == 0 && dragDist < 4 && hoveredId != null) {
-            Net.CHANNEL.sendToServer(new AllocatePacket(hoveredId));
+        if (clickedOnTree && dragDist < 4 && hoveredId != null) {
+            PlayerSkills s = skills();
+            SkillNode n = tree.nodes.get(hoveredId);
+            if (s != null && n != null) {
+                if (button == 0 && SkillService.canAllocate(s, tree, n)) {
+                    Net.CHANNEL.sendToServer(new AllocatePacket(hoveredId));
+                    playSound(true);
+                } else if (button == 1 && SkillService.canDeallocate(s, tree, n)) {
+                    Net.CHANNEL.sendToServer(new DeallocatePacket(hoveredId));
+                    playSound(false);
+                }
+            }
         }
         clickedOnTree = false;
         dragDist = 0;
@@ -380,7 +490,7 @@ public class SkillTreeScreen extends Screen {
     public boolean mouseScrolled(double mx, double my, double delta) {
         if (!builtHasClass) return super.mouseScrolled(mx, my, delta);
         double old = zoom;
-        zoom = Math.max(0.3, Math.min(2.5, zoom * (delta > 0 ? 1.1 : 1.0 / 1.1)));
+        zoom = Math.max(0.25, Math.min(2.5, zoom * (delta > 0 ? 1.1 : 1.0 / 1.1)));
         double cx = width / 2.0;
         double cy = height / 2.0 + HEADER_H / 2.0;
         double worldX = (mx - cx - offX) / old;

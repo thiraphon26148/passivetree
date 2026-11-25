@@ -16,17 +16,16 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
-/** All game rules for the passive tree. Runs on the server (canAllocate is also used by the client UI). */
+/** All game rules for the passive tree. Runs on the server (the can* checks are also used by the client UI). */
 public final class SkillService {
 
     public static Optional<PlayerSkills> get(Player p) {
         return p.getCapability(ModCapabilities.PLAYER_SKILLS).resolve();
     }
+
+    // ------------------------------------------------------------ rules
 
     public static boolean canAllocate(PlayerSkills s, SkillTree tree, SkillNode node) {
         if (s.getClassId().isEmpty()) return false;
@@ -37,6 +36,49 @@ public final class SkillService {
         }
         return false;
     }
+
+    /** A node can be refunded if it is allocated, is not the class start, and everything else stays connected to the start. */
+    public static boolean canDeallocate(PlayerSkills s, SkillTree tree, SkillNode node) {
+        SkillTree.ClassDef cd = tree.classById(s.getClassId());
+        if (cd == null) return false;
+        if (!s.isAllocated(node.id) || node.id.equals(cd.start())) return false;
+        Set<String> remaining = new HashSet<>(s.getAllocated());
+        remaining.remove(node.id);
+        return reachable(tree, cd.start(), remaining).size() == remaining.size();
+    }
+
+    /** All nodes in {@code allowed} that can be reached from {@code start} by walking only through {@code allowed}. */
+    public static Set<String> reachable(SkillTree tree, String start, Set<String> allowed) {
+        Set<String> seen = new HashSet<>();
+        if (!allowed.contains(start)) return seen;
+        Deque<String> stack = new ArrayDeque<>();
+        stack.push(start);
+        seen.add(start);
+        while (!stack.isEmpty()) {
+            String cur = stack.pop();
+            for (String nb : tree.neighbors(cur)) {
+                if (allowed.contains(nb) && seen.add(nb)) {
+                    stack.push(nb);
+                }
+            }
+        }
+        return seen;
+    }
+
+    /** Repairs saved data after the tree was changed: unknown nodes and nodes cut off from the start are dropped. */
+    public static void sanitize(PlayerSkills s, SkillTree tree) {
+        SkillTree.ClassDef cd = tree.classById(s.getClassId());
+        if (cd == null) {
+            s.setClassId("");
+            s.getAllocated().clear();
+            return;
+        }
+        s.getAllocated().removeIf(id -> !tree.nodes.containsKey(id));
+        s.getAllocated().add(cd.start());
+        s.getAllocated().retainAll(reachable(tree, cd.start(), new HashSet<>(s.getAllocated())));
+    }
+
+    // ------------------------------------------------------------ actions
 
     public static void chooseClass(ServerPlayer p, String classId) {
         SkillTree tree = SkillTree.get();
@@ -64,7 +106,19 @@ public final class SkillService {
         });
     }
 
-    /** Phase 1: free full respec (keeps the class). */
+    public static void deallocate(ServerPlayer p, String nodeId) {
+        SkillTree tree = SkillTree.get();
+        SkillNode node = tree.nodes.get(nodeId);
+        if (node == null) return;
+        get(p).ifPresent(s -> {
+            if (!canDeallocate(s, tree, node)) return;
+            s.getAllocated().remove(nodeId);
+            applyAttributes(p);
+            sync(p);
+        });
+    }
+
+    /** Free full respec (keeps the class). */
     public static void respec(ServerPlayer p) {
         SkillTree tree = SkillTree.get();
         get(p).ifPresent(s -> {
@@ -97,6 +151,8 @@ public final class SkillService {
         get(p).ifPresent(s -> Net.CHANNEL.send(PacketDistributor.PLAYER.with(() -> p), SyncPacket.of(s)));
     }
 
+    // ------------------------------------------------------------ attributes
+
     private static UUID modifierId(NodeStat.Key key) {
         String seed = PassiveTreeMod.MOD_ID + "/" + key.attribute() + "/" + key.op().name();
         return UUID.nameUUIDFromBytes(seed.getBytes(StandardCharsets.UTF_8));
@@ -108,6 +164,8 @@ public final class SkillService {
         Optional<PlayerSkills> opt = get(p);
         if (opt.isEmpty()) return;
         PlayerSkills s = opt.get();
+
+        sanitize(s, tree);
 
         // 1) remove every modifier this mod could have added
         for (SkillNode node : tree.nodes.values()) {

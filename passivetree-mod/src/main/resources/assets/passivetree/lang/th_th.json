@@ -7,7 +7,7 @@
   "screen.passivetree.center": "กลับกลาง",
   "screen.passivetree.points": "แต้ม: %s",
   "screen.passivetree.class": "คลาส: %s",
-  "screen.passivetree.hint": "ลาก: เลื่อน | เลื่อนล้อ: ซูม | คลิก: ปลดล็อก | K: ปิด",
+  "screen.passivetree.hint": "ลาก: เลื่อน | ล้อเมาส์: ซูม | คลิกซ้าย: ปลดล็อก | คลิกขวา: คืนแต้ม | K: ปิด",
   "class.passivetree.warrior": "นักรบ (Warrior)",
   "class.passivetree.ranger": "เรนเจอร์ (Ranger)",
   "class.passivetree.witch": "แม่มด (Witch)",
@@ -25,5 +25,9 @@
   "tooltip.passivetree.no_class": "เลือกคลาสก่อน",
   "msg.passivetree.points_added": "เพิ่ม %s แต้มพาสซีฟแล้ว",
   "msg.passivetree.respec_done": "รีเซ็ตต้นไม้แล้ว",
-  "msg.passivetree.class_reset": "ล้างคลาสและต้นไม้แล้ว"
+  "msg.passivetree.class_reset": "ล้างคลาสและต้นไม้แล้ว",
+  "class.passivetree.huntress": "ฮันต์เทรส (Huntress)",
+  "class.passivetree.druid": "ดรูอิด (Druid)",
+  "tooltip.passivetree.can_refund": "คลิกขวาเพื่อคืนแต้ม",
+  "tooltip.passivetree.cannot_refund": "คืนแต้มไม่ได้: มีโหนดอื่นต่อเชื่อมอยู่"
 }

@@ -21,6 +21,7 @@ public final class Net {
         CHANNEL.registerMessage(id++, SyncPacket.class, SyncPacket::encode, SyncPacket::decode, SyncPacket::handle);
         CHANNEL.registerMessage(id++, ChooseClassPacket.class, ChooseClassPacket::encode, ChooseClassPacket::decode, ChooseClassPacket::handle);
         CHANNEL.registerMessage(id++, AllocatePacket.class, AllocatePacket::encode, AllocatePacket::decode, AllocatePacket::handle);
+        CHANNEL.registerMessage(id++, DeallocatePacket.class, DeallocatePacket::encode, DeallocatePacket::decode, DeallocatePacket::handle);
         CHANNEL.registerMessage(id++, RespecPacket.class, RespecPacket::encode, RespecPacket::decode, RespecPacket::handle);
     }
 
