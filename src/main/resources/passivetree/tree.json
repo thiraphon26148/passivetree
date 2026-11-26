@@ -1,0 +1,3435 @@
+{
+ "classes": [
+  {
+   "id": "warrior",
+   "start": "warrior_s",
+   "color": "#D9534F"
+  },
+  {
+   "id": "mercenary",
+   "start": "mercenary_s",
+   "color": "#F0AD4E"
+  },
+  {
+   "id": "ranger",
+   "start": "ranger_s",
+   "color": "#5CB85C"
+  },
+  {
+   "id": "huntress",
+   "start": "huntress_s",
+   "color": "#E8708A"
+  },
+  {
+   "id": "monk",
+   "start": "monk_s",
+   "color": "#5BC0DE"
+  },
+  {
+   "id": "sorceress",
+   "start": "sorceress_s",
+   "color": "#428BCA"
+  },
+  {
+   "id": "witch",
+   "start": "witch_s",
+   "color": "#B05CD6"
+  },
+  {
+   "id": "druid",
+   "start": "druid_s",
+   "color": "#8BC34A"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "warrior_s",
+   "name": "Warrior's Oath",
+   "type": "start",
+   "x": 0.0,
+   "y": -150.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "warrior_c1",
+   "name": "Iron Strikes",
+   "type": "small",
+   "x": 0.0,
+   "y": -225.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "warrior_s"
+   ]
+  },
+  {
+   "id": "warrior_c2",
+   "name": "Brutal Vitality",
+   "type": "small",
+   "x": 0.0,
+   "y": -300.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "warrior_c1"
+   ]
+  },
+  {
+   "id": "warrior_c3",
+   "name": "Titan's Grip",
+   "type": "notable",
+   "x": 0.0,
+   "y": -375.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 1.5
+    },
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "warrior_c2"
+   ]
+  },
+  {
+   "id": "warrior_c4",
+   "name": "Stalwart Plating",
+   "type": "small",
+   "x": 0.0,
+   "y": -450.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "warrior_c3"
+   ]
+  },
+  {
+   "id": "warrior_c5",
+   "name": "Savage Footing",
+   "type": "small",
+   "x": 0.0,
+   "y": -525.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "warrior_c4"
+   ]
+  },
+  {
+   "id": "warrior_k",
+   "name": "Unbroken Will",
+   "type": "keystone",
+   "x": 0.0,
+   "y": -610.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 10.0
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": -0.1
+    }
+   ],
+   "links": [
+    "warrior_c5"
+   ]
+  },
+  {
+   "id": "warrior_l1",
+   "name": "Hardened Strikes",
+   "type": "small",
+   "x": -50.6,
+   "y": -260.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "warrior_c1"
+   ]
+  },
+  {
+   "id": "warrior_l2",
+   "name": "Relentless Vitality",
+   "type": "small",
+   "x": -63.9,
+   "y": -328.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "warrior_l1"
+   ]
+  },
+  {
+   "id": "warrior_l3",
+   "name": "Bulwark",
+   "type": "notable",
+   "x": -78.2,
+   "y": -402.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 4.0
+    },
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "warrior_l2",
+    "warrior_c3"
+   ]
+  },
+  {
+   "id": "warrior_l4",
+   "name": "Mighty Footing",
+   "type": "small",
+   "x": -92.5,
+   "y": -476.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "warrior_l3"
+   ]
+  },
+  {
+   "id": "warrior_l5",
+   "name": "Grim Strikes",
+   "type": "small",
+   "x": -124.8,
+   "y": -540.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "warrior_l4"
+   ]
+  },
+  {
+   "id": "warrior_r1",
+   "name": "Iron Guard",
+   "type": "small",
+   "x": 50.6,
+   "y": -260.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "warrior_c1"
+   ]
+  },
+  {
+   "id": "warrior_r2",
+   "name": "Brutal Blows",
+   "type": "small",
+   "x": 63.9,
+   "y": -328.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "warrior_r1"
+   ]
+  },
+  {
+   "id": "warrior_r3",
+   "name": "Battle Fervor",
+   "type": "notable",
+   "x": 78.2,
+   "y": -402.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 2.0
+    },
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "warrior_r2",
+    "warrior_c3"
+   ]
+  },
+  {
+   "id": "warrior_r4",
+   "name": "Stalwart Vigor",
+   "type": "small",
+   "x": 92.5,
+   "y": -476.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "warrior_r3"
+   ]
+  },
+  {
+   "id": "warrior_r5",
+   "name": "Savage Stance",
+   "type": "small",
+   "x": 124.8,
+   "y": -540.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "warrior_r4"
+   ]
+  },
+  {
+   "id": "warrior_b0",
+   "name": "Hardened Vigor",
+   "type": "small",
+   "x": 57.4,
+   "y": -138.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "warrior_s",
+    "mercenary_s"
+   ]
+  },
+  {
+   "id": "warrior_b1",
+   "name": "Relentless Guard",
+   "type": "small",
+   "x": 76.5,
+   "y": -184.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "warrior_b0"
+   ]
+  },
+  {
+   "id": "warrior_b2",
+   "name": "Mighty Stance",
+   "type": "small",
+   "x": 103.3,
+   "y": -249.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "warrior_b1"
+   ]
+  },
+  {
+   "id": "warrior_b3",
+   "name": "Warlord's Resolve",
+   "type": "notable",
+   "x": 132.0,
+   "y": -318.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.1
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "warrior_b2",
+    "warrior_r2",
+    "mercenary_l2"
+   ]
+  },
+  {
+   "id": "warrior_b4",
+   "name": "Grim Blows",
+   "type": "small",
+   "x": 162.6,
+   "y": -392.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "warrior_b3",
+    "warrior_r3",
+    "mercenary_l3"
+   ]
+  },
+  {
+   "id": "warrior_b5",
+   "name": "Iron Hide",
+   "type": "small",
+   "x": 191.3,
+   "y": -461.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "warrior_b4",
+    "warrior_r4",
+    "mercenary_l4"
+   ]
+  },
+  {
+   "id": "mercenary_s",
+   "name": "Sellsword's Pact",
+   "type": "start",
+   "x": 106.1,
+   "y": -106.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "mercenary_c1",
+   "name": "Hired Plating",
+   "type": "small",
+   "x": 159.1,
+   "y": -159.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "mercenary_s"
+   ]
+  },
+  {
+   "id": "mercenary_c2",
+   "name": "Plated Strikes",
+   "type": "small",
+   "x": 212.1,
+   "y": -212.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_c1"
+   ]
+  },
+  {
+   "id": "mercenary_c3",
+   "name": "Veteran's Edge",
+   "type": "notable",
+   "x": 265.2,
+   "y": -265.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 2.0
+    },
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_c2"
+   ]
+  },
+  {
+   "id": "mercenary_c4",
+   "name": "Veteran Resolve",
+   "type": "small",
+   "x": 318.2,
+   "y": -318.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_c3"
+   ]
+  },
+  {
+   "id": "mercenary_c5",
+   "name": "Cold Fortune",
+   "type": "small",
+   "x": 371.2,
+   "y": -371.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_c4"
+   ]
+  },
+  {
+   "id": "mercenary_k",
+   "name": "Iron Contract",
+   "type": "keystone",
+   "x": 431.3,
+   "y": -431.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 8.0
+    },
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 2.0
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": -0.1
+    }
+   ],
+   "links": [
+    "mercenary_c5"
+   ]
+  },
+  {
+   "id": "mercenary_l1",
+   "name": "Steel Plating",
+   "type": "small",
+   "x": 148.2,
+   "y": -219.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "mercenary_c1"
+   ]
+  },
+  {
+   "id": "mercenary_l2",
+   "name": "Ruthless Strikes",
+   "type": "small",
+   "x": 187.3,
+   "y": -277.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_l1"
+   ]
+  },
+  {
+   "id": "mercenary_l3",
+   "name": "Spoils of War",
+   "type": "notable",
+   "x": 229.3,
+   "y": -339.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 1.5
+    },
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_l2",
+    "mercenary_c3"
+   ]
+  },
+  {
+   "id": "mercenary_l4",
+   "name": "Mercenary Fortune",
+   "type": "small",
+   "x": 271.2,
+   "y": -402.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_l3"
+   ]
+  },
+  {
+   "id": "mercenary_l5",
+   "name": "Seasoned Plating",
+   "type": "small",
+   "x": 294.1,
+   "y": -470.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "mercenary_l4"
+   ]
+  },
+  {
+   "id": "mercenary_r1",
+   "name": "Hired Tempering",
+   "type": "small",
+   "x": 219.7,
+   "y": -148.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_c1"
+   ]
+  },
+  {
+   "id": "mercenary_r2",
+   "name": "Plated Guard",
+   "type": "small",
+   "x": 277.7,
+   "y": -187.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "mercenary_r1"
+   ]
+  },
+  {
+   "id": "mercenary_r3",
+   "name": "Hard Bargain",
+   "type": "notable",
+   "x": 339.9,
+   "y": -229.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "mercenary_r2",
+    "mercenary_c3"
+   ]
+  },
+  {
+   "id": "mercenary_r4",
+   "name": "Veteran Blows",
+   "type": "small",
+   "x": 402.1,
+   "y": -271.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_r3"
+   ]
+  },
+  {
+   "id": "mercenary_r5",
+   "name": "Cold Chance",
+   "type": "small",
+   "x": 470.7,
+   "y": -294.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_r4"
+   ]
+  },
+  {
+   "id": "mercenary_b0",
+   "name": "Steel Blows",
+   "type": "small",
+   "x": 138.6,
+   "y": -57.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_s",
+    "ranger_s"
+   ]
+  },
+  {
+   "id": "mercenary_b1",
+   "name": "Ruthless Tempering",
+   "type": "small",
+   "x": 184.8,
+   "y": -76.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_b0"
+   ]
+  },
+  {
+   "id": "mercenary_b2",
+   "name": "Mercenary Chance",
+   "type": "small",
+   "x": 249.4,
+   "y": -103.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_b1"
+   ]
+  },
+  {
+   "id": "mercenary_b3",
+   "name": "Gunmetal Nerves",
+   "type": "notable",
+   "x": 318.7,
+   "y": -132.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_b2",
+    "mercenary_r2",
+    "ranger_l2"
+   ]
+  },
+  {
+   "id": "mercenary_b4",
+   "name": "Seasoned Guard",
+   "type": "small",
+   "x": 392.6,
+   "y": -162.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "mercenary_b3",
+    "mercenary_r3",
+    "ranger_l3"
+   ]
+  },
+  {
+   "id": "mercenary_b5",
+   "name": "Hired Ward",
+   "type": "small",
+   "x": 461.9,
+   "y": -191.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "mercenary_b4",
+    "mercenary_r4",
+    "ranger_l4"
+   ]
+  },
+  {
+   "id": "ranger_s",
+   "name": "Ranger's Mark",
+   "type": "start",
+   "x": 150.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "ranger_c1",
+   "name": "Swift Stride",
+   "type": "small",
+   "x": 225.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "ranger_s"
+   ]
+  },
+  {
+   "id": "ranger_c2",
+   "name": "Keen Tempo",
+   "type": "small",
+   "x": 300.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "ranger_c1"
+   ]
+  },
+  {
+   "id": "ranger_c3",
+   "name": "Eagle Eye",
+   "type": "notable",
+   "x": 375.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.06
+    },
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_c2"
+   ]
+  },
+  {
+   "id": "ranger_c4",
+   "name": "Quiet Fortune",
+   "type": "small",
+   "x": 450.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_c3"
+   ]
+  },
+  {
+   "id": "ranger_c5",
+   "name": "Wild Strikes",
+   "type": "small",
+   "x": 525.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_c4"
+   ]
+  },
+  {
+   "id": "ranger_k",
+   "name": "Windrunner",
+   "type": "keystone",
+   "x": 610.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.25
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": -4.0
+    }
+   ],
+   "links": [
+    "ranger_c5"
+   ]
+  },
+  {
+   "id": "ranger_l1",
+   "name": "Light Stride",
+   "type": "small",
+   "x": 260.1,
+   "y": -50.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "ranger_c1"
+   ]
+  },
+  {
+   "id": "ranger_l2",
+   "name": "Sharp Tempo",
+   "type": "small",
+   "x": 328.8,
+   "y": -63.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "ranger_l1"
+   ]
+  },
+  {
+   "id": "ranger_l3",
+   "name": "Quick Draw",
+   "type": "notable",
+   "x": 402.5,
+   "y": -78.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.08
+    },
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_l2",
+    "ranger_c3"
+   ]
+  },
+  {
+   "id": "ranger_l4",
+   "name": "Far Strikes",
+   "type": "small",
+   "x": 476.1,
+   "y": -92.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_l3"
+   ]
+  },
+  {
+   "id": "ranger_l5",
+   "name": "Fleet Stride",
+   "type": "small",
+   "x": 540.8,
+   "y": -124.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "ranger_l4"
+   ]
+  },
+  {
+   "id": "ranger_r1",
+   "name": "Swift Chance",
+   "type": "small",
+   "x": 260.1,
+   "y": 50.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_c1"
+   ]
+  },
+  {
+   "id": "ranger_r2",
+   "name": "Keen Pace",
+   "type": "small",
+   "x": 328.8,
+   "y": 63.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "ranger_r1"
+   ]
+  },
+  {
+   "id": "ranger_r3",
+   "name": "Trailblazer",
+   "type": "notable",
+   "x": 402.5,
+   "y": 78.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "ranger_r2",
+    "ranger_c3"
+   ]
+  },
+  {
+   "id": "ranger_r4",
+   "name": "Quiet Flurry",
+   "type": "small",
+   "x": 476.1,
+   "y": 92.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "ranger_r3"
+   ]
+  },
+  {
+   "id": "ranger_r5",
+   "name": "Wild Blows",
+   "type": "small",
+   "x": 540.8,
+   "y": 124.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_r4"
+   ]
+  },
+  {
+   "id": "ranger_b0",
+   "name": "Light Flurry",
+   "type": "small",
+   "x": 138.6,
+   "y": 57.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "ranger_s",
+    "huntress_s"
+   ]
+  },
+  {
+   "id": "ranger_b1",
+   "name": "Sharp Chance",
+   "type": "small",
+   "x": 184.8,
+   "y": 76.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_b0"
+   ]
+  },
+  {
+   "id": "ranger_b2",
+   "name": "Far Blows",
+   "type": "small",
+   "x": 249.4,
+   "y": 103.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_b1"
+   ]
+  },
+  {
+   "id": "ranger_b3",
+   "name": "Hunter's Patience",
+   "type": "notable",
+   "x": 318.7,
+   "y": 132.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 1.5
+    },
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "ranger_b2",
+    "ranger_r2",
+    "huntress_l2"
+   ]
+  },
+  {
+   "id": "ranger_b4",
+   "name": "Fleet Pace",
+   "type": "small",
+   "x": 392.6,
+   "y": 162.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "ranger_b3",
+    "ranger_r3",
+    "huntress_l3"
+   ]
+  },
+  {
+   "id": "ranger_b5",
+   "name": "Swift Omens",
+   "type": "small",
+   "x": 461.9,
+   "y": 191.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "ranger_b4",
+    "ranger_r4",
+    "huntress_l4"
+   ]
+  },
+  {
+   "id": "huntress_s",
+   "name": "Huntress's Vow",
+   "type": "start",
+   "x": 106.1,
+   "y": 106.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "huntress_c1",
+   "name": "Spear Strikes",
+   "type": "small",
+   "x": 159.1,
+   "y": 159.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "huntress_s"
+   ]
+  },
+  {
+   "id": "huntress_c2",
+   "name": "Fierce Stride",
+   "type": "small",
+   "x": 212.1,
+   "y": 212.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "huntress_c1"
+   ]
+  },
+  {
+   "id": "huntress_c3",
+   "name": "Spearmaiden",
+   "type": "notable",
+   "x": 265.2,
+   "y": 265.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 1.5
+    },
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "huntress_c2"
+   ]
+  },
+  {
+   "id": "huntress_c4",
+   "name": "Agile Tempo",
+   "type": "small",
+   "x": 318.2,
+   "y": 318.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "huntress_c3"
+   ]
+  },
+  {
+   "id": "huntress_c5",
+   "name": "Hunting Plating",
+   "type": "small",
+   "x": 371.2,
+   "y": 371.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "huntress_c4"
+   ]
+  },
+  {
+   "id": "huntress_k",
+   "name": "Apex Predator",
+   "type": "keystone",
+   "x": 431.3,
+   "y": 431.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 3.0
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": -4.0
+    }
+   ],
+   "links": [
+    "huntress_c5"
+   ]
+  },
+  {
+   "id": "huntress_l1",
+   "name": "Lunging Strikes",
+   "type": "small",
+   "x": 219.7,
+   "y": 148.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "huntress_c1"
+   ]
+  },
+  {
+   "id": "huntress_l2",
+   "name": "Feral Stride",
+   "type": "small",
+   "x": 277.7,
+   "y": 187.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "huntress_l1"
+   ]
+  },
+  {
+   "id": "huntress_l3",
+   "name": "Pounce",
+   "type": "notable",
+   "x": 339.9,
+   "y": 229.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.06
+    },
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "huntress_l2",
+    "huntress_c3"
+   ]
+  },
+  {
+   "id": "huntress_l4",
+   "name": "Piercing Plating",
+   "type": "small",
+   "x": 402.1,
+   "y": 271.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "huntress_l3"
+   ]
+  },
+  {
+   "id": "huntress_l5",
+   "name": "Tribal Strikes",
+   "type": "small",
+   "x": 470.7,
+   "y": 294.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "huntress_l4"
+   ]
+  },
+  {
+   "id": "huntress_r1",
+   "name": "Spear Flurry",
+   "type": "small",
+   "x": 148.2,
+   "y": 219.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "huntress_c1"
+   ]
+  },
+  {
+   "id": "huntress_r2",
+   "name": "Fierce Blows",
+   "type": "small",
+   "x": 187.3,
+   "y": 277.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "huntress_r1"
+   ]
+  },
+  {
+   "id": "huntress_r3",
+   "name": "Ritual Hunt",
+   "type": "notable",
+   "x": 229.3,
+   "y": 339.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.08
+    },
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "huntress_r2",
+    "huntress_c3"
+   ]
+  },
+  {
+   "id": "huntress_r4",
+   "name": "Agile Pace",
+   "type": "small",
+   "x": 271.2,
+   "y": 402.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "huntress_r3"
+   ]
+  },
+  {
+   "id": "huntress_r5",
+   "name": "Hunting Guard",
+   "type": "small",
+   "x": 294.1,
+   "y": 470.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "huntress_r4"
+   ]
+  },
+  {
+   "id": "huntress_b0",
+   "name": "Lunging Pace",
+   "type": "small",
+   "x": 57.4,
+   "y": 138.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "huntress_s",
+    "monk_s"
+   ]
+  },
+  {
+   "id": "huntress_b1",
+   "name": "Feral Flurry",
+   "type": "small",
+   "x": 76.5,
+   "y": 184.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "huntress_b0"
+   ]
+  },
+  {
+   "id": "huntress_b2",
+   "name": "Piercing Guard",
+   "type": "small",
+   "x": 103.3,
+   "y": 249.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "huntress_b1"
+   ]
+  },
+  {
+   "id": "huntress_b3",
+   "name": "Amazon's Pride",
+   "type": "notable",
+   "x": 132.0,
+   "y": 318.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 2.0
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "huntress_b2",
+    "huntress_r2",
+    "monk_l2"
+   ]
+  },
+  {
+   "id": "huntress_b4",
+   "name": "Tribal Blows",
+   "type": "small",
+   "x": 162.6,
+   "y": 392.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "huntress_b3",
+    "huntress_r3",
+    "monk_l3"
+   ]
+  },
+  {
+   "id": "huntress_b5",
+   "name": "Spear Haste",
+   "type": "small",
+   "x": 191.3,
+   "y": 461.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "huntress_b4",
+    "huntress_r4",
+    "monk_l4"
+   ]
+  },
+  {
+   "id": "monk_s",
+   "name": "Monk's Vow",
+   "type": "start",
+   "x": 0.0,
+   "y": 150.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "monk_c1",
+   "name": "Calm Tempo",
+   "type": "small",
+   "x": 0.0,
+   "y": 225.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "monk_s"
+   ]
+  },
+  {
+   "id": "monk_c2",
+   "name": "Flowing Vitality",
+   "type": "small",
+   "x": 0.0,
+   "y": 300.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "monk_c1"
+   ]
+  },
+  {
+   "id": "monk_c3",
+   "name": "Inner Focus",
+   "type": "notable",
+   "x": 0.0,
+   "y": 375.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.08
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "monk_c2"
+   ]
+  },
+  {
+   "id": "monk_c4",
+   "name": "Open Stride",
+   "type": "small",
+   "x": 0.0,
+   "y": 450.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "monk_c3"
+   ]
+  },
+  {
+   "id": "monk_c5",
+   "name": "Still Plating",
+   "type": "small",
+   "x": 0.0,
+   "y": 525.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "monk_c4"
+   ]
+  },
+  {
+   "id": "monk_k",
+   "name": "Flowing Strikes",
+   "type": "keystone",
+   "x": 0.0,
+   "y": 610.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.3
+    },
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": -1.0
+    }
+   ],
+   "links": [
+    "monk_c5"
+   ]
+  },
+  {
+   "id": "monk_l1",
+   "name": "Rising Tempo",
+   "type": "small",
+   "x": 50.6,
+   "y": 260.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "monk_c1"
+   ]
+  },
+  {
+   "id": "monk_l2",
+   "name": "Inner Vitality",
+   "type": "small",
+   "x": 63.9,
+   "y": 328.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "monk_l1"
+   ]
+  },
+  {
+   "id": "monk_l3",
+   "name": "Rising Fist",
+   "type": "notable",
+   "x": 78.2,
+   "y": 402.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 4.0
+    },
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "monk_l2",
+    "monk_c3"
+   ]
+  },
+  {
+   "id": "monk_l4",
+   "name": "Disciplined Plating",
+   "type": "small",
+   "x": 92.5,
+   "y": 476.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "monk_l3"
+   ]
+  },
+  {
+   "id": "monk_l5",
+   "name": "Serene Tempo",
+   "type": "small",
+   "x": 124.8,
+   "y": 540.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "monk_l4"
+   ]
+  },
+  {
+   "id": "monk_r1",
+   "name": "Calm Pace",
+   "type": "small",
+   "x": -50.6,
+   "y": 260.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "monk_c1"
+   ]
+  },
+  {
+   "id": "monk_r2",
+   "name": "Flowing Flurry",
+   "type": "small",
+   "x": -63.9,
+   "y": 328.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "monk_r1"
+   ]
+  },
+  {
+   "id": "monk_r3",
+   "name": "Windswept Step",
+   "type": "notable",
+   "x": -78.2,
+   "y": 402.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.06
+    },
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "monk_r2",
+    "monk_c3"
+   ]
+  },
+  {
+   "id": "monk_r4",
+   "name": "Open Vigor",
+   "type": "small",
+   "x": -92.5,
+   "y": 476.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "monk_r3"
+   ]
+  },
+  {
+   "id": "monk_r5",
+   "name": "Still Guard",
+   "type": "small",
+   "x": -124.8,
+   "y": 540.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "monk_r4"
+   ]
+  },
+  {
+   "id": "monk_b0",
+   "name": "Rising Vigor",
+   "type": "small",
+   "x": -57.4,
+   "y": 138.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "monk_s",
+    "sorceress_s"
+   ]
+  },
+  {
+   "id": "monk_b1",
+   "name": "Inner Pace",
+   "type": "small",
+   "x": -76.5,
+   "y": 184.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "monk_b0"
+   ]
+  },
+  {
+   "id": "monk_b2",
+   "name": "Disciplined Guard",
+   "type": "small",
+   "x": -103.3,
+   "y": 249.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 1.0
+    }
+   ],
+   "links": [
+    "monk_b1"
+   ]
+  },
+  {
+   "id": "monk_b3",
+   "name": "Mountain Stance",
+   "type": "notable",
+   "x": -132.0,
+   "y": 318.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": 2.0
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "monk_b2",
+    "monk_r2",
+    "sorceress_l2"
+   ]
+  },
+  {
+   "id": "monk_b4",
+   "name": "Serene Flurry",
+   "type": "small",
+   "x": -162.6,
+   "y": 392.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "monk_b3",
+    "monk_r3",
+    "sorceress_l3"
+   ]
+  },
+  {
+   "id": "monk_b5",
+   "name": "Calm Steps",
+   "type": "small",
+   "x": -191.3,
+   "y": 461.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "monk_b4",
+    "monk_r4",
+    "sorceress_l4"
+   ]
+  },
+  {
+   "id": "sorceress_s",
+   "name": "Sorceress's Spark",
+   "type": "start",
+   "x": -106.1,
+   "y": 106.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "sorceress_c1",
+   "name": "Static Strikes",
+   "type": "small",
+   "x": -159.1,
+   "y": 159.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_s"
+   ]
+  },
+  {
+   "id": "sorceress_c2",
+   "name": "Arcane Stride",
+   "type": "small",
+   "x": -212.1,
+   "y": 212.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "sorceress_c1"
+   ]
+  },
+  {
+   "id": "sorceress_c3",
+   "name": "Storm Caller",
+   "type": "notable",
+   "x": -265.2,
+   "y": 265.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 1.5
+    },
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_c2"
+   ]
+  },
+  {
+   "id": "sorceress_c4",
+   "name": "Fleeting Fortune",
+   "type": "small",
+   "x": -318.2,
+   "y": 318.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_c3"
+   ]
+  },
+  {
+   "id": "sorceress_c5",
+   "name": "Storm Tempo",
+   "type": "small",
+   "x": -371.2,
+   "y": 371.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "sorceress_c4"
+   ]
+  },
+  {
+   "id": "sorceress_k",
+   "name": "Arcane Gambit",
+   "type": "keystone",
+   "x": -431.3,
+   "y": 431.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 4.0
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": -6.0
+    }
+   ],
+   "links": [
+    "sorceress_c5"
+   ]
+  },
+  {
+   "id": "sorceress_l1",
+   "name": "Volatile Strikes",
+   "type": "small",
+   "x": -148.2,
+   "y": 219.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_c1"
+   ]
+  },
+  {
+   "id": "sorceress_l2",
+   "name": "Crackling Stride",
+   "type": "small",
+   "x": -187.3,
+   "y": 277.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "sorceress_l1"
+   ]
+  },
+  {
+   "id": "sorceress_l3",
+   "name": "Lightning Reflex",
+   "type": "notable",
+   "x": -229.3,
+   "y": 339.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.06
+    },
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "sorceress_l2",
+    "sorceress_c3"
+   ]
+  },
+  {
+   "id": "sorceress_l4",
+   "name": "Bright Tempo",
+   "type": "small",
+   "x": -271.2,
+   "y": 402.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "sorceress_l3"
+   ]
+  },
+  {
+   "id": "sorceress_l5",
+   "name": "Charged Strikes",
+   "type": "small",
+   "x": -294.1,
+   "y": 470.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_l4"
+   ]
+  },
+  {
+   "id": "sorceress_r1",
+   "name": "Static Chance",
+   "type": "small",
+   "x": -219.7,
+   "y": 148.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_c1"
+   ]
+  },
+  {
+   "id": "sorceress_r2",
+   "name": "Arcane Blows",
+   "type": "small",
+   "x": -277.7,
+   "y": 187.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_r1"
+   ]
+  },
+  {
+   "id": "sorceress_r3",
+   "name": "Raw Power",
+   "type": "notable",
+   "x": -339.9,
+   "y": 229.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_r2",
+    "sorceress_c3"
+   ]
+  },
+  {
+   "id": "sorceress_r4",
+   "name": "Fleeting Pace",
+   "type": "small",
+   "x": -402.1,
+   "y": 271.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "sorceress_r3"
+   ]
+  },
+  {
+   "id": "sorceress_r5",
+   "name": "Storm Flurry",
+   "type": "small",
+   "x": -470.7,
+   "y": 294.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "sorceress_r4"
+   ]
+  },
+  {
+   "id": "sorceress_b0",
+   "name": "Volatile Pace",
+   "type": "small",
+   "x": -138.6,
+   "y": 57.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "sorceress_s",
+    "witch_s"
+   ]
+  },
+  {
+   "id": "sorceress_b1",
+   "name": "Crackling Chance",
+   "type": "small",
+   "x": -184.8,
+   "y": 76.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_b0"
+   ]
+  },
+  {
+   "id": "sorceress_b2",
+   "name": "Bright Flurry",
+   "type": "small",
+   "x": -249.4,
+   "y": 103.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.04
+    }
+   ],
+   "links": [
+    "sorceress_b1"
+   ]
+  },
+  {
+   "id": "sorceress_b3",
+   "name": "Frostbound Mind",
+   "type": "notable",
+   "x": -318.7,
+   "y": 132.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": 0.08
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "sorceress_b2",
+    "sorceress_r2",
+    "witch_l2"
+   ]
+  },
+  {
+   "id": "sorceress_b4",
+   "name": "Charged Blows",
+   "type": "small",
+   "x": -392.6,
+   "y": 162.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.attack_damage",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_b3",
+    "sorceress_r3",
+    "witch_l3"
+   ]
+  },
+  {
+   "id": "sorceress_b5",
+   "name": "Static Omens",
+   "type": "small",
+   "x": -461.9,
+   "y": 191.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "sorceress_b4",
+    "sorceress_r4",
+    "witch_l4"
+   ]
+  },
+  {
+   "id": "witch_s",
+   "name": "Witch's Pact",
+   "type": "start",
+   "x": -150.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "witch_c1",
+   "name": "Dark Fortune",
+   "type": "small",
+   "x": -225.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_s"
+   ]
+  },
+  {
+   "id": "witch_c2",
+   "name": "Cursed Vitality",
+   "type": "small",
+   "x": -300.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "witch_c1"
+   ]
+  },
+  {
+   "id": "witch_c3",
+   "name": "Hexweaver",
+   "type": "notable",
+   "x": -375.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_c2"
+   ]
+  },
+  {
+   "id": "witch_c4",
+   "name": "Hexed Resolve",
+   "type": "small",
+   "x": -450.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_c3"
+   ]
+  },
+  {
+   "id": "witch_c5",
+   "name": "Grim Stride",
+   "type": "small",
+   "x": -525.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "witch_c4"
+   ]
+  },
+  {
+   "id": "witch_k",
+   "name": "Fortune's Hex",
+   "type": "keystone",
+   "x": -610.0,
+   "y": 0.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 3.0
+    },
+    {
+     "attribute": "minecraft:generic.armor",
+     "op": "add",
+     "value": -4.0
+    }
+   ],
+   "links": [
+    "witch_c5"
+   ]
+  },
+  {
+   "id": "witch_l1",
+   "name": "Veiled Fortune",
+   "type": "small",
+   "x": -260.1,
+   "y": 50.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_c1"
+   ]
+  },
+  {
+   "id": "witch_l2",
+   "name": "Black Vitality",
+   "type": "small",
+   "x": -328.8,
+   "y": 63.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "witch_l1"
+   ]
+  },
+  {
+   "id": "witch_l3",
+   "name": "Grim Resolve",
+   "type": "notable",
+   "x": -402.5,
+   "y": 78.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 4.0
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "witch_l2",
+    "witch_c3"
+   ]
+  },
+  {
+   "id": "witch_l4",
+   "name": "Bound Stride",
+   "type": "small",
+   "x": -476.1,
+   "y": 92.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "witch_l3"
+   ]
+  },
+  {
+   "id": "witch_l5",
+   "name": "Pale Fortune",
+   "type": "small",
+   "x": -540.8,
+   "y": 124.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_l4"
+   ]
+  },
+  {
+   "id": "witch_r1",
+   "name": "Dark Tempering",
+   "type": "small",
+   "x": -260.1,
+   "y": -50.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_c1"
+   ]
+  },
+  {
+   "id": "witch_r2",
+   "name": "Cursed Chance",
+   "type": "small",
+   "x": -328.8,
+   "y": -63.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_r1"
+   ]
+  },
+  {
+   "id": "witch_r3",
+   "name": "Veil Walker",
+   "type": "notable",
+   "x": -402.5,
+   "y": -78.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_r2",
+    "witch_c3"
+   ]
+  },
+  {
+   "id": "witch_r4",
+   "name": "Hexed Vigor",
+   "type": "small",
+   "x": -476.1,
+   "y": -92.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "witch_r3"
+   ]
+  },
+  {
+   "id": "witch_r5",
+   "name": "Grim Pace",
+   "type": "small",
+   "x": -540.8,
+   "y": -124.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "witch_r4"
+   ]
+  },
+  {
+   "id": "witch_b0",
+   "name": "Veiled Vigor",
+   "type": "small",
+   "x": -138.6,
+   "y": -57.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "witch_s",
+    "druid_s"
+   ]
+  },
+  {
+   "id": "witch_b1",
+   "name": "Black Tempering",
+   "type": "small",
+   "x": -184.8,
+   "y": -76.5,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_b0"
+   ]
+  },
+  {
+   "id": "witch_b2",
+   "name": "Bound Pace",
+   "type": "small",
+   "x": -249.4,
+   "y": -103.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "witch_b1"
+   ]
+  },
+  {
+   "id": "witch_b3",
+   "name": "Blood Pact",
+   "type": "notable",
+   "x": -318.7,
+   "y": -132.0,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.06
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "witch_b2",
+    "witch_r2",
+    "druid_l2"
+   ]
+  },
+  {
+   "id": "witch_b4",
+   "name": "Pale Chance",
+   "type": "small",
+   "x": -392.6,
+   "y": -162.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_b3",
+    "witch_r3",
+    "druid_l3"
+   ]
+  },
+  {
+   "id": "witch_b5",
+   "name": "Dark Ward",
+   "type": "small",
+   "x": -461.9,
+   "y": -191.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.armor_toughness",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "witch_b4",
+    "witch_r4",
+    "druid_l4"
+   ]
+  },
+  {
+   "id": "druid_s",
+   "name": "Druid's Covenant",
+   "type": "start",
+   "x": -106.1,
+   "y": -106.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "druid_c1",
+   "name": "Wild Vitality",
+   "type": "small",
+   "x": -159.1,
+   "y": -159.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "druid_s"
+   ]
+  },
+  {
+   "id": "druid_c2",
+   "name": "Mossy Footing",
+   "type": "small",
+   "x": -212.1,
+   "y": -212.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "druid_c1"
+   ]
+  },
+  {
+   "id": "druid_c3",
+   "name": "Heart of Oak",
+   "type": "notable",
+   "x": -265.2,
+   "y": -265.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 4.0
+    },
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "druid_c2"
+   ]
+  },
+  {
+   "id": "druid_c4",
+   "name": "Ancient Fortune",
+   "type": "small",
+   "x": -318.2,
+   "y": -318.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "druid_c3"
+   ]
+  },
+  {
+   "id": "druid_c5",
+   "name": "Verdant Stride",
+   "type": "small",
+   "x": -371.2,
+   "y": -371.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "druid_c4"
+   ]
+  },
+  {
+   "id": "druid_k",
+   "name": "Heart of the Wild",
+   "type": "keystone",
+   "x": -431.3,
+   "y": -431.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 12.0
+    },
+    {
+     "attribute": "minecraft:generic.attack_speed",
+     "op": "mult_base",
+     "value": -0.15
+    }
+   ],
+   "links": [
+    "druid_c5"
+   ]
+  },
+  {
+   "id": "druid_l1",
+   "name": "Primal Vitality",
+   "type": "small",
+   "x": -219.7,
+   "y": -148.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "druid_c1"
+   ]
+  },
+  {
+   "id": "druid_l2",
+   "name": "Thorned Footing",
+   "type": "small",
+   "x": -277.7,
+   "y": -187.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "druid_l1"
+   ]
+  },
+  {
+   "id": "druid_l3",
+   "name": "Rooted Stance",
+   "type": "notable",
+   "x": -339.9,
+   "y": -229.3,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.1
+    },
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "druid_l2",
+    "druid_c3"
+   ]
+  },
+  {
+   "id": "druid_l4",
+   "name": "Barkskin Stride",
+   "type": "small",
+   "x": -402.1,
+   "y": -271.2,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "druid_l3"
+   ]
+  },
+  {
+   "id": "druid_l5",
+   "name": "Feral Vitality",
+   "type": "small",
+   "x": -470.7,
+   "y": -294.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "druid_l4"
+   ]
+  },
+  {
+   "id": "druid_r1",
+   "name": "Wild Chance",
+   "type": "small",
+   "x": -148.2,
+   "y": -219.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "druid_c1"
+   ]
+  },
+  {
+   "id": "druid_r2",
+   "name": "Mossy Vigor",
+   "type": "small",
+   "x": -187.3,
+   "y": -277.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "druid_r1"
+   ]
+  },
+  {
+   "id": "druid_r3",
+   "name": "Wild Fortune",
+   "type": "notable",
+   "x": -229.3,
+   "y": -339.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 1.0
+    },
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "druid_r2",
+    "druid_c3"
+   ]
+  },
+  {
+   "id": "druid_r4",
+   "name": "Ancient Stance",
+   "type": "small",
+   "x": -271.2,
+   "y": -402.1,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "druid_r3"
+   ]
+  },
+  {
+   "id": "druid_r5",
+   "name": "Verdant Pace",
+   "type": "small",
+   "x": -294.1,
+   "y": -470.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "druid_r4"
+   ]
+  },
+  {
+   "id": "druid_b0",
+   "name": "Primal Stance",
+   "type": "small",
+   "x": -57.4,
+   "y": -138.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "druid_s",
+    "warrior_s"
+   ]
+  },
+  {
+   "id": "druid_b1",
+   "name": "Thorned Chance",
+   "type": "small",
+   "x": -76.5,
+   "y": -184.8,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "druid_b0"
+   ]
+  },
+  {
+   "id": "druid_b2",
+   "name": "Barkskin Pace",
+   "type": "small",
+   "x": -103.3,
+   "y": -249.4,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.03
+    }
+   ],
+   "links": [
+    "druid_b1"
+   ]
+  },
+  {
+   "id": "druid_b3",
+   "name": "Stag's Stride",
+   "type": "notable",
+   "x": -132.0,
+   "y": -318.7,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.movement_speed",
+     "op": "mult_base",
+     "value": 0.06
+    },
+    {
+     "attribute": "minecraft:generic.knockback_resistance",
+     "op": "add",
+     "value": 0.05
+    }
+   ],
+   "links": [
+    "druid_b2",
+    "druid_r2",
+    "warrior_l2"
+   ]
+  },
+  {
+   "id": "druid_b4",
+   "name": "Feral Vigor",
+   "type": "small",
+   "x": -162.6,
+   "y": -392.6,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.max_health",
+     "op": "add",
+     "value": 2.0
+    }
+   ],
+   "links": [
+    "druid_b3",
+    "druid_r3",
+    "warrior_l3"
+   ]
+  },
+  {
+   "id": "druid_b5",
+   "name": "Wild Omens",
+   "type": "small",
+   "x": -191.3,
+   "y": -461.9,
+   "stats": [
+    {
+     "attribute": "minecraft:generic.luck",
+     "op": "add",
+     "value": 0.5
+    }
+   ],
+   "links": [
+    "druid_b4",
+    "druid_r4",
+    "warrior_l4"
+   ]
+  }
+ ]
+}
